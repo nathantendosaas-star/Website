@@ -1,0 +1,8 @@
+{
+  "name": "Kampala Kitchen Template",
+  "description": "Premium multi-page restaurant website template featuring glassmorphism, Framer Motion animations, and smooth scrolling.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
