@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { MapPin, Clock, Phone, ArrowRight } from 'lucide-react';
+import { MapPin, Clock, Phone, ArrowRight, Star } from 'lucide-react';
 import { restaurant } from '../data/restaurantInfo';
 import { menuItems, formatPrice } from '../data/menuItems';
 
@@ -45,7 +45,7 @@ export function Home() {
           >
             <img 
               src={restaurant.heroImage} 
-              alt="Delicious meal" 
+              alt="Gourmet Dining" 
               className="w-full h-full object-cover"
             />
           </motion.div>
@@ -56,29 +56,29 @@ export function Home() {
           style={{ opacity: opacityText }}
           className="relative z-10 text-center px-6 max-w-4xl sm:mt-10"
         >
-          <div className="overflow-hidden mb-12 sm:mb-16">
+          <div className="overflow-hidden mb-8 sm:mb-12">
             <motion.h1 
               initial={{ y: "110%", rotate: 2 }}
               animate={{ y: 0, rotate: 0 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-serif text-white tracking-tight leading-[1.1]"
             >
-              {restaurant.tagline.split(' ').slice(0, 3).join(' ')} <br/>
-              <span className="text-accent-light italic">{restaurant.tagline.split(' ').slice(3).join(' ')}</span>
+              {restaurant.tagline.split(' ').slice(0, 2).join(' ')} <br/>
+              <span className="text-accent italic">{restaurant.tagline.split(' ').slice(2).join(' ')}</span>
             </motion.h1>
           </div>
           
           <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.5, type: "spring", bounce: 0.4 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 max-w-xs sm:max-w-none mx-auto"
           >
-            <Link to="/reserve" className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-white px-8 py-4 sm:px-10 sm:py-5 rounded-full font-medium transition-all shadow-xl active:scale-95 text-base sm:text-lg border border-accent/20 hover:border-white/40">
-              Book Your Stay
+            <Link to="/reserve" className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-white px-8 py-4 sm:px-10 sm:py-5 rounded-full font-medium transition-all shadow-xl active:scale-95 text-base sm:text-lg border border-accent/20">
+              Reserve a Table
             </Link>
             <Link to="/menu" className="w-full sm:w-auto glass-panel hover:bg-white/30 text-white px-8 py-4 sm:px-10 sm:py-5 rounded-full font-medium transition-all active:scale-95 text-base sm:text-lg">
-              Explore Dining
+              Explore the Menu
             </Link>
           </motion.div>
         </motion.div>
@@ -94,7 +94,7 @@ export function Home() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-6xl font-serif mb-4 text-charcoal tracking-tight">Chef's Signatures</h2>
-          <p className="text-charcoal/60 text-lg">A taste of our most beloved creations.</p>
+          <p className="text-charcoal/60 text-lg">A selection of our most celebrated creations.</p>
         </motion.div>
 
         <div className="flex overflow-x-auto md:grid md:grid-cols-3 gap-4 md:gap-8 pb-8 md:pb-0 snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 hide-scrollbar">
@@ -144,7 +144,7 @@ export function Home() {
         </motion.div>
       </section>
 
-      {/* Stay With Us */}
+      {/* The Experience */}
       <section className="py-24 bg-accent/5 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -155,17 +155,22 @@ export function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <h2 className="text-4xl md:text-6xl font-serif mb-6 text-charcoal tracking-tight">Stay With Us</h2>
+                <div className="flex items-center gap-2 text-accent mb-4 font-bold tracking-widest uppercase text-sm">
+                  <Star size={16} fill="currentColor" />
+                  <span>Exceptional Dining</span>
+                </div>
+                <h2 className="text-4xl md:text-6xl font-serif mb-6 text-charcoal tracking-tight">The Experience</h2>
                 <p className="text-lg text-charcoal/70 mb-10 leading-relaxed max-w-lg">
-                  Rest in luxury after a world-class meal. Our rooms are designed to provide the ultimate relaxation, 
-                  featuring premium amenities and breathtaking views of the city.
+                  Beyond the plate, we offer a sanctuary of taste and atmosphere. 
+                  From intimate candlelight dinners to grand celebrations, 
+                  every detail is curated to provide an unforgettable evening.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link to="/rooms" className="inline-flex items-center justify-center bg-accent text-white px-8 py-4 rounded-full font-bold transition-all hover:bg-accent/90 active:scale-95 shadow-lg">
-                    View Our Rooms
+                    Private Dining
                   </Link>
                   <Link to="/reserve" className="inline-flex items-center justify-center glass-panel border border-accent/20 text-accent px-8 py-4 rounded-full font-bold transition-all hover:bg-accent/5 active:scale-95">
-                    Book Your Stay
+                    Reserve a Table
                   </Link>
                 </div>
               </motion.div>
@@ -180,8 +185,8 @@ export function Home() {
             >
               <div className="aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=1200&auto=format&fit=crop" 
-                  alt="Luxury Hotel Room" 
+                  src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1200&auto=format&fit=crop" 
+                  alt="Fine Dining Atmosphere" 
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -222,7 +227,7 @@ export function Home() {
                 viewport={{ once: true }}
                 className="absolute -bottom-8 -right-8 bg-cream p-8 rounded-3xl shadow-glass hidden md:block max-w-xs group-hover:-translate-y-2 transition-transform duration-500"
               >
-                <p className="font-serif text-2xl text-accent leading-snug">"A modern take on the traditions we grew up with."</p>
+                <p className="font-serif text-2xl text-accent leading-snug">"Every ingredient has a purpose, every dish a soul."</p>
               </motion.div>
             </motion.div>
             
@@ -240,14 +245,14 @@ export function Home() {
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-4xl md:text-6xl font-serif mb-6 text-charcoal tracking-tight leading-tight">Rooted in Tradition, <br />Crafted for Today</h2>
+                <h2 className="text-4xl md:text-6xl font-serif mb-6 text-charcoal tracking-tight leading-tight">Crafted with Passion, <br />Served with Grace</h2>
                 <p className="text-lg text-charcoal/70 mb-10 leading-relaxed max-w-lg">
-                  We believe that the best meals are the ones that remind you of home. 
-                  Our kitchen blends generations of family recipes with locally sourced, 
-                  fresh ingredients to bring you the authentic taste of Kampala.
+                  We believe that fine dining should be an approachable luxury. 
+                  Our kitchen balances classical techniques with modern innovation, 
+                  sourcing only the finest seasonal ingredients from local artisans.
                 </p>
                 <Link to="/about" className="group inline-flex items-center gap-4 bg-transparent border border-charcoal/20 hover:border-accent hover:text-accent px-8 py-4 rounded-full transition-all font-medium overflow-hidden relative">
-                  <span className="relative z-10 transition-colors">Read Our Story</span>
+                  <span className="relative z-10 transition-colors">Our Story</span>
                 </Link>
               </motion.div>
             </div>
@@ -280,7 +285,7 @@ export function Home() {
                     <MapPin size={20} />
                   </div>
                   <div className="pt-1">
-                    <h4 className="font-bold mb-1 text-charcoal">Location</h4>
+                    <h4 className="font-bold mb-1 text-charcoal">Address</h4>
                     <p className="text-charcoal/70 leading-relaxed text-sm">{restaurant.address}</p>
                   </div>
                 </motion.div>
@@ -293,7 +298,7 @@ export function Home() {
                     <Clock size={20} />
                   </div>
                   <div className="pt-1">
-                    <h4 className="font-bold mb-1 text-charcoal">Opening Hours</h4>
+                    <h4 className="font-bold mb-1 text-charcoal">Dinner Service</h4>
                     <p className="text-charcoal/70 leading-relaxed text-sm whitespace-pre-line">{restaurant.hours}</p>
                   </div>
                 </motion.div>
@@ -315,7 +320,7 @@ export function Home() {
             
             <div className="flex flex-col items-center justify-center md:items-end space-y-4">
               <Link to="/reserve" className="w-full md:w-auto bg-charcoal text-white hover:bg-warm-black px-10 py-5 rounded-full text-lg font-medium transition-transform active:scale-95 text-center shadow-xl flex items-center justify-center gap-3 group">
-                <span className="relative">Book Now</span>
+                <span className="relative">Reserve Now</span>
               </Link>
               <Link to="/contact" className="text-sm font-medium text-charcoal/60 hover:text-accent transition-colors underline underline-offset-4">
                 View map and contact form

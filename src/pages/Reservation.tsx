@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Calendar, Clock, Users, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Calendar, Clock, Users, ArrowRight, CheckCircle2, Star } from 'lucide-react';
 import { restaurant } from '../data/restaurantInfo';
 
 export function Reservation() {
@@ -31,12 +31,18 @@ export function Reservation() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
+            <div className="flex items-center gap-2 text-accent mb-4 font-bold tracking-widest uppercase text-sm">
+              <Star size={16} fill="currentColor" />
+              <span>Reservations</span>
+            </div>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-charcoal mb-6 leading-tight">
-              Book Your <br />
-              <span className="text-accent italic">Sweet Spot</span>
+              A Seat at <br />
+              <span className="text-accent italic">Our Table</span>
             </h1>
             <p className="text-lg text-charcoal/70 mb-10 leading-relaxed max-w-md">
-              Planning a birthday party or a sweet gathering with friends? Reserve a table and enjoy our world-class froyo together.
+              Secure your place for an evening of culinary discovery. 
+              Whether it's an intimate dinner or a grand celebration, 
+              we ensure every moment is perfectly orchestrated.
             </p>
 
             <div className="space-y-6">
@@ -45,7 +51,7 @@ export function Reservation() {
                   <Clock size={24} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-charcoal mb-1">Opening Hours</h3>
+                  <h3 className="font-bold text-charcoal mb-1">Service Hours</h3>
                   <p className="text-charcoal/70 whitespace-pre-line">{restaurant.hours}</p>
                 </div>
               </div>
@@ -83,7 +89,7 @@ export function Reservation() {
                 </p>
                 <button 
                   onClick={() => setSubmitted(false)}
-                  className="mt-8 text-accent font-medium hover:opacity-80 transition-opacity"
+                  className="mt-8 text-accent font-medium hover:opacity-80 transition-opacity underline underline-offset-4"
                 >
                   Make another reservation
                 </button>
@@ -103,7 +109,7 @@ export function Reservation() {
                       <input 
                         type="date" 
                         required
-                        className="w-full bg-white/80 border border-charcoal/10 rounded-[0.875rem] px-5 py-4 outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all text-charcoal appearance-none"
+                        className="w-full bg-white/80 border border-charcoal/10 rounded-[0.875rem] px-5 py-4 outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all text-charcoal"
                       />
                     </div>
                   </div>
@@ -118,7 +124,7 @@ export function Reservation() {
                 </div>
 
                 <div className="relative z-10">
-                  <label className="block text-sm font-bold text-charcoal/80 mb-2">Number of Guests</label>
+                  <label className="block text-sm font-bold text-charcoal/80 mb-2">Party Size</label>
                   <div className="relative flex items-center">
                     <Users className="absolute left-5 text-charcoal/40" size={20} />
                     <select required className="w-full bg-white/80 border border-charcoal/10 rounded-[0.875rem] pl-12 pr-5 py-4 outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all text-charcoal appearance-none">
@@ -136,7 +142,7 @@ export function Reservation() {
                       type="text" 
                       required
                       className="w-full bg-white/80 border border-charcoal/10 rounded-[0.875rem] px-5 py-4 outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all text-charcoal"
-                      placeholder="John Doe"
+                      placeholder="Your name"
                     />
                   </div>
                   <div>
@@ -145,7 +151,7 @@ export function Reservation() {
                       type="tel" 
                       required
                       className="w-full bg-white/80 border border-charcoal/10 rounded-[0.875rem] px-5 py-4 outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all text-charcoal"
-                      placeholder="+256 700..."
+                      placeholder="Contact number"
                     />
                   </div>
                 </div>
@@ -156,7 +162,7 @@ export function Reservation() {
                     type="email" 
                     required
                     className="w-full bg-white/80 border border-charcoal/10 rounded-[0.875rem] px-5 py-4 outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all text-charcoal"
-                    placeholder="john@example.com"
+                    placeholder="email@example.com"
                   />
                 </div>
 
@@ -165,7 +171,7 @@ export function Reservation() {
                   <textarea 
                     rows={2}
                     className="w-full bg-white/80 border border-charcoal/10 rounded-[0.875rem] px-5 py-4 outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all text-charcoal resize-none"
-                    placeholder="Anniversary, dietary requirements, preferred seating..."
+                    placeholder="Dietary requirements, preferred seating, occasion..."
                   ></textarea>
                 </div>
 
@@ -173,7 +179,7 @@ export function Reservation() {
                   type="submit"
                   className="w-full bg-charcoal hover:bg-warm-black text-white font-bold px-8 py-4 rounded-full flex items-center justify-center space-x-2 transition-all active:scale-95 shadow-md mt-8 group"
                 >
-                  <span>Confirm Reservation</span>
+                  <span>Confirm Booking</span>
                   <ArrowRight size={18} className="transform group-hover:translate-x-1 transition-transform" />
                 </button>
               </form>

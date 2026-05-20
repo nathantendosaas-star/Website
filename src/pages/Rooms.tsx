@@ -1,17 +1,21 @@
 import { motion } from 'motion/react';
-import { Bed, Wifi, Tv, Wind, Coffee, MapPin } from 'lucide-react';
-import { rooms, formatRoomPrice } from '../data/roomData';
+import { Utensils, Wine, Star, Camera, Music, MapPin } from 'lucide-react';
+import { experiences, formatExperiencePrice } from '../data/roomData';
 import { Link } from 'react-router-dom';
 
-const amenityIcons: Record<string, any> = {
-  "Free Wi-Fi": Wifi,
-  "AC": Wind,
-  "Smart TV": Tv,
-  "Mini Bar": Coffee,
-  "City View": MapPin,
-  "Coffee Maker": Coffee,
-  "Private Balcony": Bed,
-  "Jacuzzi": Bed
+const featureIcons: Record<string, any> = {
+  "Private Chef": Utensils,
+  "Wine Pairing": Wine,
+  "Custom Menu": Star,
+  "Kitchen Tour": Camera,
+  "Sommelier Guided": Wine,
+  "Rare Vintages": Wine,
+  "Pairing Plate": Utensils,
+  "Cellar Tour": MapPin,
+  "Panoramic Views": MapPin,
+  "Signature Cocktails": Wine,
+  "Small Plates": Utensils,
+  "Live Music": Music
 };
 
 export function Rooms() {
@@ -24,22 +28,22 @@ export function Rooms() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-5xl md:text-7xl font-serif text-charcoal mb-6"
         >
-          Our <span className="text-accent italic">Rooms</span>
+          Curated <span className="text-accent italic">Experiences</span>
         </motion.h1>
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.8 }}
-          className="text-lg text-charcoal/60 max-w-2xl mx-auto"
+          className="text-lg text-charcoal/70 max-w-2xl mx-auto"
         >
-          Designed for relaxation and productivity, our rooms blend traditional hospitality with modern luxury.
+          Elevate your visit with our exclusive dining events and private showcases.
         </motion.p>
       </section>
 
       <section className="px-4 md:px-8 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {rooms.map((room, i) => (
+        {experiences.map((exp, i) => (
           <motion.div
-            key={room.id}
+            key={exp.id}
             initial={{ y: 40, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
@@ -50,33 +54,33 @@ export function Rooms() {
               <motion.img 
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.8 }}
-                src={room.image} 
-                alt={room.name} 
+                src={exp.image} 
+                alt={exp.name} 
                 className="w-full h-full object-cover"
               />
               <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full shadow-sm">
-                <p className="text-sm font-bold text-accent">{formatRoomPrice(room.price)}</p>
+                <p className="text-sm font-bold text-accent">{formatExperiencePrice(exp.price)}</p>
               </div>
             </div>
 
             <div className="p-8 flex flex-col flex-grow">
-              <h3 className="text-2xl font-serif font-bold text-charcoal mb-3 group-hover:text-accent transition-colors">{room.name}</h3>
-              <p className="text-charcoal/70 text-sm leading-relaxed mb-6 flex-grow">{room.description}</p>
+              <h3 className="text-2xl font-serif font-bold text-charcoal mb-3 group-hover:text-accent transition-colors">{exp.name}</h3>
+              <p className="text-charcoal/70 text-sm leading-relaxed mb-6 flex-grow">{exp.description}</p>
               
               <div className="flex flex-wrap gap-3 mb-8">
-                {room.amenities.map(amenity => {
-                  const Icon = amenityIcons[amenity] || Bed;
+                {exp.features.map(feature => {
+                  const Icon = featureIcons[feature] || Star;
                   return (
-                    <div key={amenity} className="flex items-center gap-1.5 bg-accent/5 px-3 py-1.5 rounded-full">
+                    <div key={feature} className="flex items-center gap-1.5 bg-accent/5 px-3 py-1.5 rounded-full">
                       <Icon size={14} className="text-accent" />
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-accent/80">{amenity}</span>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-accent/80">{feature}</span>
                     </div>
                   );
                 })}
               </div>
 
               <Link to="/reserve" className="w-full py-4 bg-charcoal text-white rounded-full font-bold text-center hover:bg-accent transition-colors active:scale-95 shadow-md">
-                Book This Room
+                Inquire Now
               </Link>
             </div>
           </motion.div>

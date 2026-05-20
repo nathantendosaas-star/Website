@@ -3,12 +3,12 @@
 @import "tailwindcss";
 
 @theme {
-  --color-cream: #FAF7F2;
+  --color-cream: #FDFBFA;
   --color-warm-white: #FFFFFF;
-  --color-charcoal: #1C1C1C;
-  --color-warm-black: #111111;
-  --color-accent: #C8392B;
-  --color-accent-light: #F5E6E4;
+  --color-charcoal: #1A1A1A;
+  --color-warm-black: #0F0F0F;
+  --color-accent: #C5A059;
+  --color-accent-light: #F3EBDD;
 
   --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Playfair Display", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;

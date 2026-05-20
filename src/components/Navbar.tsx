@@ -9,11 +9,11 @@ export function Navbar() {
 
   const links = [
     { name: 'Home', path: '/' },
-    { name: 'Rooms', path: '/rooms' },
-    { name: 'Restaurant', path: '/menu' },
-    { name: 'About', path: '/about' },
+    { name: 'Experiences', path: '/rooms' },
+    { name: 'The Menu', path: '/menu' },
+    { name: 'Our Story', path: '/about' },
     { name: 'Contact', path: '/contact' },
-    { name: 'Reserve', path: '/reserve' },
+    { name: 'Reservations', path: '/reserve' },
   ];
 
   return (
